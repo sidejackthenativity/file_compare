@@ -1,0 +1,15 @@
+#!/bin/bash
+#checks scopes within one file and compares to another.
+
+scope="to_check.txt"
+target="amassintel.output"
+
+while IFS= read -r line_t
+do
+  while IFS= read -r line
+  do
+    if [[ "$line_t" == *".$line" ]]; then
+      echo "$line_t"
+    fi
+  done < "$scope"
+done < "$target"
